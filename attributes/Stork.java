@@ -8,15 +8,12 @@ import java.util.Collections;
 public class Stork implements Serializable {
 
     private static int staticId = 0;
-    // Ekstensja klasy
     private static List<Stork> storkList = new ArrayList<>();
 
     private int id;
     private boolean isKnown;
-    // Atrybut opcjonalny
     private String name;
 
-    // Atrybut powtarzalny i wymagany
     private Set<CardinalDirection> cameFrom = new HashSet<>();
     
     public Stork(String name, CardinalDirection dir) {
@@ -31,7 +28,6 @@ public class Stork implements Serializable {
         storkList.add(this);
     }
 
-    // Przeciążenie metody / konstruktora
     public Stork(CardinalDirection dir) {
         this.isKnown = false;
         this.cameFrom.add(dir);
@@ -80,12 +76,10 @@ public class Stork implements Serializable {
         this.cameFrom.remove(dir);
     }
 
-    // Metoda klasowa
     public static List<Stork> getStorkList() {
         return Collections.unmodifiableList(storkList);
     }
 
-    // Atrybut pochodny i metoda klasowa
     public static int getStorksFromDirection(CardinalDirection dir) {
         int count = 0;
         for (Stork stork : storkList) {
@@ -105,7 +99,6 @@ public class Stork implements Serializable {
         return staticId;
     }
 
-    // Przesłonięcie metody
     public String toString() {
         return "Stork{id= " + id + ", name= " + name + "}";
     }
